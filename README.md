@@ -42,12 +42,27 @@ npm run build
 
 Hasil build statis tersimpan di folder `dist/`.
 
-## Deploy ke Vercel
+## Cara Menyambungkan & Deploy ke Vercel
 
-Proyek ini adalah aplikasi frontend statis tanpa database, tanpa server backend, dan tanpa API key:
+Proyek ini sudah dilengkapi `vercel.json` dan tidak membutuhkan database, server backend, maupun Environment Variable / API key.
 
-1. Unggah seluruh proyek ke repository GitHub.
-2. Buka [Vercel](https://vercel.com) dan pilih **Add New Project**.
-3. Import repository GitHub Anda.
-4. Vercel otomatis mendeteksi preset **Vite** (`Build Command: npm run build`, `Output Directory: dist`) berdasarkan `vercel.json`.
-5. Klik **Deploy**.
+### Opsi 1: Melalui GitHub & Dashboard Vercel (Direkomendasikan)
+
+1. Push seluruh kode proyek ke repository GitHub Anda (`git init`, `git add .`, `git commit -m "Initial commit"`, `git push`).
+2. Login ke [vercel.com](https://vercel.com) lalu klik **Add New... → Project**.
+3. Hubungkan akun GitHub Anda dan pilih repository proyek ini (**Import**).
+4. Pastikan pengaturan build sesuai dengan `vercel.json` (otomatis terdeteksi):
+   - **Framework Preset**: `Vite`
+   - **Install Command**: `npm install`
+   - **Build Command**: `npm run build`
+   - **Output Directory**: `dist`
+   - **Environment Variables**: Tidak perlu diisi.
+5. Klik **Deploy** dan tunggu hingga URL live website Anda aktif.
+
+### Opsi 2: Melalui Vercel CLI
+
+```bash
+npm install -g vercel
+vercel login
+vercel --prod
+```
